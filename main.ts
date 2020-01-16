@@ -1,31 +1,11 @@
 function Score () {
-    info.setScore(1)
+    info.changeScoreBy(1)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     overlap()
 })
 function overlap () {
     game.over(false)
-}
-function rocks () {
-    rocks1 = sprites.createProjectileFromSide(img`
-. . . . . . . . . c c c . . . . 
-. . . . . . c c c c c c c c . . 
-. . . b b b b b b b b b b c c . 
-. . b c c c b b c c b b b b b c 
-c b c c c c c c c c b b b c b c 
-c c c c c c b b b c c b c c b c 
-c c c c c b c c b b c b b c b c 
-b c b b c b b b c b b c b c b c 
-b c b b c c c c c c b c b c c c 
-b c b b b c b b c c b c b c c c 
-. c c c b c b b b c c c b c c c 
-. . c c c c c b c b c c c c c c 
-. . . b b b c c c c c c c c c . 
-. . . c c b b b b c c c c c c . 
-. . . . c c b b b c c c . . . . 
-. . . . . c c c c c c . . . . . 
-`, 50, 100)
 }
 function Surivior () {
     surivior = sprites.create(img`
@@ -54,13 +34,35 @@ function Surivior () {
 . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . 
 `, SpriteKind.Player)
-    surivior.setPosition(144, 60)
+    surivior.setPosition(128, 63)
     controller.moveSprite(surivior, 100, 100)
 }
+function projectile2 () {
+    projectile = sprites.createProjectileFromSide(img`
+. . . . . . . . . c c c . . . . 
+. . . . . . c c c c c c c c . . 
+. . . b b b b b b b b b b c c . 
+. . b c c c b b c c b b b b b c 
+c b c c c c c c c c b b b c b c 
+c c c c c c b b b c c b c c b c 
+c c c c c b c c b b c b b c b c 
+b c b b c b b b c b b c b c b c 
+b c b b c c c c c c b c b c c c 
+b c b b b c b b c c b c b c c c 
+. c c c b c b b b c c c b c c c 
+. . c c c c c b c b c c c c c c 
+. . . b b b c c c c c c c c c . 
+. . . c c b b b b c c c c c c . 
+. . . . c c b b b c c c . . . . 
+. . . . . c c c c c c . . . . . 
+`, 50, 100)
+}
+let projectile: Sprite = null
 let surivior: Sprite = null
-let rocks1: Sprite = null
 Surivior()
-game.onUpdateInterval(2000, function () {
-    rocks()
+music.baDing.play()
+effects.clouds.startScreenEffect()
+game.onUpdateInterval(200, function () {
     Score()
+    projectile2()
 })
