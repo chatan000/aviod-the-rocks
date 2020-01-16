@@ -8,7 +8,7 @@ function overlap () {
     game.over(false)
 }
 function rocks () {
-    projectile = sprites.createProjectileFromSide(img`
+    rocks1 = sprites.createProjectileFromSide(img`
 . . . . . . . . . c c c . . . . 
 . . . . . . c c c c c c c c . . 
 . . . b b b b b b b b b b c c . 
@@ -58,9 +58,9 @@ function Surivior () {
     controller.moveSprite(surivior, 100, 100)
 }
 let surivior: Sprite = null
-let projectile: Sprite = null
+let rocks1: Sprite = null
 Surivior()
-game.onUpdateInterval(200, function () {
+game.onUpdateInterval(2000, function () {
     rocks()
     Score()
 })
