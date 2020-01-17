@@ -55,7 +55,7 @@ b c b b b c b b c c b c b c c c
 . . . c c b b b b c c c c c c . 
 . . . . c c b b b c c c . . . . 
 . . . . . c c c c c c . . . . . 
-`, 50, 100)
+`, 50, Math.randomRange(-5, 98))
 }
 let projectile: Sprite = null
 let surivior: Sprite = null
