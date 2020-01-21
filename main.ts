@@ -1,3 +1,6 @@
+function life () {
+    info.setLife(1)
+}
 function Score () {
     info.changeScoreBy(1)
 }
@@ -36,6 +39,7 @@ function Surivior () {
 `, SpriteKind.Player)
     surivior.setPosition(128, 63)
     controller.moveSprite(surivior, 100, 100)
+    surivior.setFlag(SpriteFlag.StayInScreen, true)
 }
 function projectile2 () {
     projectile = sprites.createProjectileFromSide(img`
@@ -59,7 +63,9 @@ b c b b b c b b c c b c b c c c
 }
 let projectile: Sprite = null
 let surivior: Sprite = null
+game.splash("Survive the falling rocks for as long as you can")
 Surivior()
+life()
 music.baDing.play()
 effects.clouds.startScreenEffect()
 game.onUpdateInterval(200, function () {
